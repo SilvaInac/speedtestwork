@@ -1,0 +1,23 @@
+{
+    "short_name": "stw",
+    "name": "SpeedTestWork",
+    "start_url": ".",
+    "display": "standalone",
+    "theme_color": "#ffffff",
+    "theme-color": "#ffffff",
+    "background_color": "#000000",
+    "background-color": "#000000",
+    "description": "Speedtest that checks the possible types of services and qualities",
+    "icons": [
+      {
+        "src": "imagens/icone1.png",
+        "type": "imagens/png",
+        "sizes": "225x225"
+      },
+      {
+        "src": "imagens/icone2.png",
+        "type": "imagens/png",
+        "sizes": "512x512"
+      }
+    ]
+  }
