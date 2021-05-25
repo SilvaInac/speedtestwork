@@ -6,6 +6,8 @@ const request = require('request');
 const helpers = require('./Helpers');
 const cors = require('cors');
 
+module.exports = Server;
+
 let cache;
 
 Server.use(cors());

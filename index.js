@@ -1,3 +1,10 @@
+const app  = require("./SpeedTest");
+
+
+app.get("/login",function(req,res){
+    res.send("LOGIN");
+})
+
 window.addEventListener('load', () =>{
     registerSW()
 })

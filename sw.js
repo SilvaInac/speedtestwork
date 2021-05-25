@@ -1,5 +1,4 @@
-
-const cacheName = 'portfolio'
+const cacheName = 'SpeedTestWork'
 
 //Instalar
 self.addEventListener('install', function(event){

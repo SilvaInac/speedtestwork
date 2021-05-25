@@ -1,5 +1,5 @@
 {
-  "name": "NodeSpeedtest",
+  "name": "speedtestwork",
   "version": "1.0.2",
   "description": "HTML5 Speedtest with NodeJS Backend",
   "main": "src/Speedtest.js",
