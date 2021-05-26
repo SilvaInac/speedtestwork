@@ -20,7 +20,6 @@ async function registerSW(){
 }
 
 const port = process.env.PORT || 8888;
-
 app.listen(port, function () {
     console.log('Speedtest Server is up and running!');
 });
