@@ -5,9 +5,9 @@ app.get("/login",function(req,res){
     res.send("LOGIN");
 })
 
-window.addEventListener('load', () =>{
-    registerSW()
-})
+//window.addEventListener('load', () =>{
+//   registerSW()
+//})
 
 async function registerSW(){
     if('serviceWorker' in navigator){
