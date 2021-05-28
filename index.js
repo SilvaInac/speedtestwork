@@ -10,11 +10,11 @@ const Sequelize = require('sequelize')
     })
 //Rotas
     app.get("/login",function(req,res){
-        res.sendFile(__dirname+"/public/routes/login/index.html");
+        res.sendFile(__dirname+"/public/login.html");
     })
 
     app.get("/register",function(req,res){
-        res.sendFile(__dirname+"/public/routes/register.html");
+        res.sendFile(__dirname+"/public/register.html");
     })
 
     app.get("/about",function(req,res){
