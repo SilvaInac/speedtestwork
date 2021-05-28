@@ -1,10 +1,25 @@
 const app  = require("./SpeedTest");
+const handlebars = require('express-handlebars')
+const Sequelize = require('sequelize')
 
+//config
+    //Conexão com o MySql
+    const sequelize = new Sequelize('connection','root','Du190401',{
+        host:"localhost",
+        dialect: 'mysql'
+    })
+//Rotas
+    app.get("/login",function(req,res){
+        res.sendFile(__dirname+"/public/routes/login/index.html");
+    })
 
-app.get("/login",function(req,res){
-    res.send("LOGIN");
+    app.get("/register",function(req,res){
+        res.sendFile(__dirname+"/public/routes/register.html");
+    })
+
+    app.get("/about",function(req,res){
+        res.send("This project");
 })
-
 //window.addEventListener('load', () =>{
 //   registerSW()
 //})
