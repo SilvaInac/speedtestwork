@@ -1,13 +1,11 @@
 const app  = require("./SpeedTest");
 const handlebars = require('express-handlebars')
-const Sequelize = require('sequelize')
+const bodyParser = require('body-parser')
 
 //config
-    //Conexão com o MySql
-    const sequelize = new Sequelize('connection','root','Du190401',{
-        host:"localhost",
-        dialect: 'mysql'
-    })
+// Body Parser
+    app.use(bodyParser.urlencoded({extends: false}))
+    app.use(bodyParser.json())
 //Rotas
     app.get("/login",function(req,res){
         res.sendFile(__dirname+"/public/login.html");
@@ -17,9 +15,18 @@ const Sequelize = require('sequelize')
         res.sendFile(__dirname+"/public/register.html");
     })
 
-    app.get("/about",function(req,res){
-        res.send("This project");
-})
+    app.get("/perfil",function(req,res){
+        res.sendFile(__dirname+"/public/perfil.html");
+    })
+
+    app.post("/data_reg",function(req,res) {
+        req.body.user
+        res.send(req.body.user+ " registered Success!!WELCOME");
+    })
+    app.post("/data_login",function(req,res) {
+        res.send('Login on');
+    })
+
 //window.addEventListener('load', () =>{
 //   registerSW()
 //})
