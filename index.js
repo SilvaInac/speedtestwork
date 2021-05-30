@@ -2,6 +2,7 @@ const app  = require("./SpeedTest");
 const handlebars = require('express-handlebars')
 const bodyParser = require('body-parser')
 const User = require('./models/User')
+app.set('view engine', 'handlebars');
 
 //config
     //Template Engine
@@ -10,18 +11,23 @@ const User = require('./models/User')
     app.use(bodyParser.urlencoded({extends: false}))
     app.use(bodyParser.json())
 //Rotas
+    app.get("/",function(req,res){
+    res.render('home');
+    })
+    app.get("/home",function(req,res){
+        res.render('home');
+        })
     app.get("/login",function(req,res){
-        res.sendFile(__dirname+"/public/login.html");
+        res.render('login');
     })
 
     app.get("/register",function(req,res){
-        res.sendFile(__dirname+"/public/register.html");
+        res.render('register');
     })
-
     app.get("/perfil",function(req,res){
-        res.sendFile(__dirname+"/public/perfil.html");
+        res.render('perfil');
     })
-
+//postagens
     app.post("/data_reg",function(req,res) {
         User.create({
             user: req.body.user,
