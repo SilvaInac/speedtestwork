@@ -3,7 +3,22 @@ const handlebars = require('express-handlebars')
 const bodyParser = require('body-parser')
 const User = require('./models/User')
 app.set('view engine', 'handlebars');
+const Window = require('window');
+const window = new Window();
 
+window.addEventListener('load', () =>{
+    registerSW()
+ })
+ 
+ async function registerSW(){
+     if('serviceWorker' in navigator){
+         try{
+             await navigator.serviceWorker.register('./sw.js')
+         } catch(e){
+             console.log(`SW registration failed`);
+         }
+     }
+ }
 //config
     //Template Engine
     app.engine('handlebars',handlebars({defaultLayout:'main'}))
@@ -41,8 +56,8 @@ app.set('view engine', 'handlebars');
         })
     })
     app.post("/data_login",function(req,res) {
-        User.findall().then(function(post){
-        res.render('perfil', {"post": post})
+        User.findAll().then(function(post){
+        res.render('perfil', {post: post})
         })
     })
     app.post("/speed",function(req,res){
@@ -53,20 +68,6 @@ app.set('view engine', 'handlebars');
         })
 
     })
-
-//window.addEventListener('load', () =>{
-//   registerSW()
-//})
-
-async function registerSW(){
-    if('serviceWorker' in navigator){
-        try{
-            await navigator.serviceWorker.register('./sw.js')
-        } catch(e){
-            console.log(`SW registration failed`);
-        }
-    }
-}
 
 const port = process.env.PORT || 8888;
 app.listen(port, function () {

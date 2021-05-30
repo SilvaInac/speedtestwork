@@ -6,7 +6,11 @@ self.addEventListener('install', function(event){
         caches.open(cacheName).then(function (cache){
             cache.addAll([
                 './',
-                './sobre.html',
+                './views/layouts/main.handlebars',
+                './views/home.handlebars',
+                './views/login.handlebars',
+                './views/register.handlebars',
+                './views/perfil.handlebars',
                 './manifest.webmanifest',
                 './index.js'
             ])
@@ -25,7 +29,7 @@ self.addEventListener('fetch', async e =>{
     const req = e.request
     const url = new URL(req.url)
 
-    if(url.origin === location.origin){
+    if(url.login === location.origin){
         e.respondWith(cacheFirst(req))
     } else{
         e.respondWith(networkAndCache(req))
