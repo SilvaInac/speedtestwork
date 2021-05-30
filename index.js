@@ -1,8 +1,11 @@
 const app  = require("./SpeedTest");
 const handlebars = require('express-handlebars')
 const bodyParser = require('body-parser')
+const User = require('./models/User')
 
 //config
+    //Template Engine
+    app.engine('handlebars',handlebars({defaultLayout:'main'}))
 // Body Parser
     app.use(bodyParser.urlencoded({extends: false}))
     app.use(bodyParser.json())
@@ -20,11 +23,29 @@ const bodyParser = require('body-parser')
     })
 
     app.post("/data_reg",function(req,res) {
-        req.body.user
-        res.send(req.body.user+ " registered Success!!WELCOME");
+        User.create({
+            user: req.body.user,
+            email: req.body.email,
+            senha: req.body.senha
+        }).then(function(){
+            res.redirect('/')
+        }).catch(function(erro) {
+            res.send("Error : "+ erro)
+            
+        })
     })
     app.post("/data_login",function(req,res) {
-        res.send('Login on');
+        User.findall().then(function(post){
+        res.render('perfil', {"post": post})
+        })
+    })
+    app.post("/speed",function(req,res){
+        User.create({
+            plano: req.body.plano,
+            speed_dl: req.body.speed_dl,
+            speed_ul: req.body.speed_ul
+        })
+
     })
 
 //window.addEventListener('load', () =>{

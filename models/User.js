@@ -10,6 +10,15 @@ const User = db.sequelize.define('usuarios',{
     },
     senha: {
         type: db.Sequelize.STRING
+    },
+    plano: {
+        type: db.Sequelize.INTEGER
+    },
+    speed_dl: {
+        type: db.Sequelize.INTEGER
+    },
+    speed_ul: {
+        type: db.Sequelize.INTEGER
     }
 })
 
