@@ -42,6 +42,9 @@ window.addEventListener('load', () =>{
     app.get("/perfil",function(req,res){
         res.render('perfil');
     })
+    app.get("/about",function(req,res){
+        res.render('about');
+    })
 //postagens
     app.post("/data_reg",function(req,res) {
         User.create({
@@ -63,8 +66,8 @@ window.addEventListener('load', () =>{
     app.post("/speed",function(req,res){
         User.create({
             plano: req.body.plano,
-            speed_dl: req.body.speed_dl,
-            speed_ul: req.body.speed_ul
+            speed_dl: req.body.dlText,
+            speed_ul: req.body.ulText
         })
 
     })
